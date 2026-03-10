@@ -7,6 +7,8 @@
     <meta name="description"
         content="An interactive sorting algorithms visualizer built with HTML, CSS, and Vanilla JavaScript." />
     <title>Sorting Algorithms Visualizer</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -16,11 +18,11 @@
     <header class="header">
         <div class="header-content">
             <div class="title-container">
-                <h1>📊 Sorting Algorithms Visualizer</h1>
+                <h1><i class="fa-solid fa-chart-column"></i> Sorting Algorithms Visualizer</h1>
                 <p class="subtitle">Watch sorting algorithms come to life, step by step!</p>
             </div>
             <button id="theme-toggle" class="btn btn-theme" aria-label="Toggle Dark/Light Mode">
-                <span class="theme-icon">🌙</span>
+                <i class="fa-solid fa-moon theme-icon"></i>
             </button>
         </div>
     </header>
@@ -33,31 +35,39 @@
 
             <!-- Algorithm Selector -->
             <div class="control-group">
-                <label for="algorithm-select">Algorithm</label>
+                <label for="algorithm-select"><i class="fa-solid fa-layer-group"></i> Algorithm</label>
                 <select id="algorithm-select">
                     <option value="bubble">Bubble Sort</option>
                     <option value="selection">Selection Sort</option>
                     <option value="insertion">Insertion Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="heap">Heap Sort</option>
+                    <option value="shell">Shell Sort</option>
+                    <option value="counting">Counting Sort</option>
                 </select>
             </div>
 
             <!-- Array Size Slider -->
             <div class="control-group">
-                <label for="array-size">Array Size: <span id="size-display">30</span></label>
+                <label for="array-size"><i class="fa-solid fa-ruler-horizontal"></i> Array Size: <span
+                        id="size-display">30</span></label>
                 <input type="range" id="array-size" min="5" max="80" value="30" />
             </div>
 
             <!-- Speed Slider -->
             <div class="control-group">
-                <label for="speed-control">Speed: <span id="speed-display">Medium</span></label>
+                <label for="speed-control"><i class="fa-solid fa-gauge-high"></i> Speed: <span
+                        id="speed-display">Medium</span></label>
                 <input type="range" id="speed-control" min="1" max="3" value="2" step="1" />
             </div>
 
             <!-- Action Buttons -->
             <div class="control-group buttons-group">
-                <button id="btn-generate" class="btn btn-secondary">Generate New Array</button>
-                <button id="btn-start" class="btn btn-primary">▶ Start</button>
-                <button id="btn-reset" class="btn btn-danger">↺ Reset</button>
+                <button id="btn-generate" class="btn btn-secondary"><i class="fa-solid fa-shuffle"></i> Generate New
+                    Array</button>
+                <button id="btn-start" class="btn btn-primary"><i class="fa-solid fa-play"></i> Start</button>
+                <button id="btn-reset" class="btn btn-danger"><i class="fa-solid fa-rotate-right"></i> Reset</button>
             </div>
 
         </section>

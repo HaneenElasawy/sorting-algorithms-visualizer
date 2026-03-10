@@ -11,7 +11,7 @@ Built with plain **HTML**, **CSS**, and **Vanilla JavaScript** as a beginner-fri
 - 🎨 **Visual bar chart** — each bar represents an array element
 - 🔴🟠🟢 **Color-coded states** — see which bars are being compared, swapped, or sorted
 - 🌗 **Dark / Light Mode** — toggle the theme (saves automatically to your browser via `localStorage`)
-- ⚙️ **3 Sorting Algorithms** — Bubble, Selection, and Insertion Sort
+- ⚙️ **8 Sorting Algorithms** — Bubble, Selection, Insertion, Merge, Quick, Heap, Shell, and Counting Sort
 - 🎚️ **Adjustable array size** — from 5 to 80 elements
 - ⚡ **Adjustable speed** — Slow, Medium, or Fast
 - 📘 **Algorithm info panel** — shows time complexity, space complexity, and stability

@@ -23,7 +23,7 @@ let isDarkMode = localStorage.getItem("theme") === "dark";
 // Apply the theme immediately if it's dark
 if (isDarkMode) {
     document.documentElement.setAttribute("data-theme", "dark");
-    themeToggleBtn.querySelector(".theme-icon").textContent = "☀️";
+    themeToggleBtn.querySelector(".theme-icon").className = "fa-solid fa-sun theme-icon";
 }
 
 // --- Animation State ---
@@ -164,11 +164,11 @@ themeToggleBtn.addEventListener("click", function () {
 
     if (isDarkMode) {
         root.setAttribute("data-theme", "dark");
-        icon.textContent = "☀️";
+        icon.className = "fa-solid fa-sun theme-icon";
         localStorage.setItem("theme", "dark"); // save preference
     } else {
         root.removeAttribute("data-theme");
-        icon.textContent = "🌙";
+        icon.className = "fa-solid fa-moon theme-icon";
         localStorage.setItem("theme", "light"); // save preference
     }
 });

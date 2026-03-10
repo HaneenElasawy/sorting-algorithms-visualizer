@@ -1,0 +1,333 @@
+/* =============================================
+   Global Reset & Base Styles
+   ============================================= */
+
+/* Remove default browser spacing and use border-box sizing */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Use a clean system font, soft background */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  color: #2d3748;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =============================================
+   Header
+   ============================================= */
+
+.header {
+  background-color: #2b6cb0;
+  color: #ffffff;
+  text-align: center;
+  padding: 24px 16px 20px;
+}
+
+.header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.header .subtitle {
+  margin-top: 6px;
+  font-size: 1rem;
+  color: #bee3f8;
+}
+
+/* =============================================
+   Main Container
+   ============================================= */
+
+.main-container {
+  flex: 1;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =============================================
+   Controls Panel
+   ============================================= */
+
+.controls-panel {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+/* Each control group holds a label + input */
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 140px;
+}
+
+.control-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+/* Dropdown select styling */
+select {
+  padding: 8px 12px;
+  border: 1.5px solid #cbd5e0;
+  border-radius: 8px;
+  background-color: #f7fafc;
+  font-size: 0.9rem;
+  color: #2d3748;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+select:focus {
+  border-color: #2b6cb0;
+}
+
+/* Range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #cbd5e0;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2b6cb0;
+  cursor: pointer;
+}
+
+/* =============================================
+   Buttons
+   ============================================= */
+
+/* Group buttons side by side */
+.buttons-group {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Base button style */
+.btn {
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Primary button — Start */
+.btn-primary {
+  background-color: #2b6cb0;
+  color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #2c5282;
+}
+
+/* Secondary button — Generate */
+.btn-secondary {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #cbd5e0;
+}
+
+/* Danger button — Reset */
+.btn-danger {
+  background-color: #fc8181;
+  color: #ffffff;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #f56565;
+}
+
+/* =============================================
+   Visualizer Area
+   ============================================= */
+
+.visualizer-area {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 16px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  min-height: 320px;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Bar container: holds all the vertical bars side by side */
+.bar-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  width: 100%;
+  height: 280px;
+}
+
+/* Each individual bar */
+.bar {
+  flex: 1;
+  background-color: #63b3ed;  /* Default: soft blue */
+  border-radius: 4px 4px 0 0;
+  transition: height 0.05s ease;
+  min-width: 4px;
+}
+
+/* Bar state: currently being compared */
+.bar.compare {
+  background-color: #f6ad55;  /* Orange */
+}
+
+/* Bar state: currently being swapped */
+.bar.swap {
+  background-color: #fc8181;  /* Red */
+}
+
+/* Bar state: confirmed in sorted position */
+.bar.sorted {
+  background-color: #68d391;  /* Green */
+}
+
+/* =============================================
+   Color Legend
+   ============================================= */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 4px 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #4a5568;
+}
+
+/* Small colored square next to each label */
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.default-color  { background-color: #63b3ed; }
+.compare-color  { background-color: #f6ad55; }
+.swap-color     { background-color: #fc8181; }
+.sorted-color   { background-color: #68d391; }
+
+/* =============================================
+   Algorithm Info Section
+   ============================================= */
+
+.algo-info {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.algo-info h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2b6cb0;
+  margin-bottom: 8px;
+}
+
+.algo-info p {
+  font-size: 0.92rem;
+  color: #4a5568;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+/* Stats row: Time, Space, Stable */
+.algo-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stat-box {
+  background-color: #ebf8ff;
+  border: 1.5px solid #bee3f8;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 110px;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #4a5568;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1rem;
+  color: #2b6cb0;
+  font-weight: 700;
+}
+
+/* =============================================
+   Footer
+   ============================================= */
+
+.footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 0.82rem;
+  color: #718096;
+  border-top: 1px solid #e2e8f0;
+  background-color: #ffffff;
+}

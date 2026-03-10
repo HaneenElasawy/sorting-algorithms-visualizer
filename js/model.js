@@ -49,15 +49,16 @@ const algoInfo = {
 
 // --- Array Functions ---
 
-// Generate a new random array of a given size
-// Values range from 10 to 100 (for nice bar heights)
+// Generate a new random array for the visualization
+// Each number represents the height of a bar
+// Values range from 10 to 100 so all bars are visible
 function generateArray(size) {
     array = [];
     for (let i = 0; i < size; i++) {
-        let value = Math.floor(Math.random() * 91) + 10; // random 10–100
+        let value = Math.floor(Math.random() * 91) + 10; // random number 10–100
         array.push(value);
     }
-    steps = []; // clear any old steps
+    steps = []; // clear any old animation steps
     return array;
 }
 
@@ -111,35 +112,45 @@ function recordSorted(arr, sorted) {
 // Each algorithm works on a copy of the array and records steps.
 // It does NOT touch the DOM — that's the view's job.
 
-// Bubble Sort
-// Compares neighbors and bubbles the largest value to the end each pass
+// Bubble Sort algorithm logic
+// Compares adjacent elements and "bubbles" the largest value to the end
 function bubbleSort() {
-    let arr = array.slice(); // work on a copy
-    let sorted = [];         // tracks which positions are in final place
+    let arr = array.slice(); // work on a copy so we don't change original early
+    let sorted = [];         // tracks positions that are completely sorted
     let n = arr.length;
 
+    // Loop through the entire array multiple times
     for (let i = 0; i < n - 1; i++) {
+
+        // Loop through the unsorted portion of the array
         for (let j = 0; j < n - i - 1; j++) {
-            // Compare the two neighbors
+
+            // Record this step: highlight bars being compared
             recordCompare(arr, j, j + 1, sorted);
 
+            // Check if they are in the wrong order
             if (arr[j] > arr[j + 1]) {
-                // They are in the wrong order — swap them
+
+                // Record this step: highlight bars being swapped
                 recordSwap(arr, j, j + 1, sorted);
+
+                // Swap the values in the array
                 let temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
         }
-        // After each pass, the last unsorted element is now in its final spot
+
+        // After each full pass, the last unsorted element naturally falls into its sorted place
         sorted.push(n - 1 - i);
         recordSorted(arr, sorted);
     }
 
-    // The first element is also sorted after all passes
+    // After all passes finish, the first element is also guaranteed sorted
     sorted.push(0);
     recordSorted(arr, sorted);
 
+    // Return the list of all recorded animation frames
     return steps;
 }
 

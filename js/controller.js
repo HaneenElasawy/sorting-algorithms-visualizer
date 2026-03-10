@@ -13,7 +13,18 @@ const speedSlider = document.getElementById("speed-control");
 const startBtn = document.getElementById("btn-start");
 const generateBtn = document.getElementById("btn-generate");
 const resetBtn = document.getElementById("btn-reset");
+const themeToggleBtn = document.getElementById("theme-toggle");
 
+
+// --- Theme State ---
+// Check local storage for theme, default to light
+let isDarkMode = localStorage.getItem("theme") === "dark";
+
+// Apply the theme immediately if it's dark
+if (isDarkMode) {
+    document.documentElement.setAttribute("data-theme", "dark");
+    themeToggleBtn.querySelector(".theme-icon").textContent = "☀️";
+}
 
 // --- Animation State ---
 
@@ -137,5 +148,27 @@ algorithmSelect.addEventListener("change", function () {
 
     if (!isSorting) {
         generateAndRender(); // show a fresh array for the new algorithm
+    }
+});
+
+
+// --- Event: Theme Toggle Button ---
+
+// Toggle between light state and dark state using CSS variables
+themeToggleBtn.addEventListener("click", function () {
+    isDarkMode = !isDarkMode; // flip the state
+
+    // Select the HTML element to apply the data attribute
+    let root = document.documentElement;
+    let icon = themeToggleBtn.querySelector(".theme-icon");
+
+    if (isDarkMode) {
+        root.setAttribute("data-theme", "dark");
+        icon.textContent = "☀️";
+        localStorage.setItem("theme", "dark"); // save preference
+    } else {
+        root.removeAttribute("data-theme");
+        icon.textContent = "🌙";
+        localStorage.setItem("theme", "light"); // save preference
     }
 });
